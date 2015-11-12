@@ -43,6 +43,15 @@ public class SequentialCracker {
 	}
 	
 	public void crack() {
-		long time = System.getCurrentTimeMillis();
+		StringBuilder str = new StringBuilder();
+		// assume that min length is 1
+		int curPosition = 0;
+		
+		if (str.length() < curPosition) {
+			str.append(' ');
+		}
+		for (char i = '0'; i <= '9'; i++) {
+			str.replace(curPosition, curPosition + 1, "" + i);
+		}
 	}
 }
