@@ -32,7 +32,7 @@ public class SequentialCracker {
 		long startTime = System.currentTimeMillis();
 		String pass = sc.crack();
 		long runTime = System.currentTimeMillis() - startTime;
-		//System.out.println(String.format("Found the password '%s' in %.3f seconds", pass, (runTime / 1000.0)));
+		System.out.println(String.format("Found the password '%s' in %.3f seconds", pass, (runTime / 1000.0)));
 	}
 	
 	private static void badArgs() {
@@ -56,7 +56,7 @@ public class SequentialCracker {
 	}
 	
 	public String crack() {
-		for (int i = minLength; i < maxLength; i++) {
+		for (int i = minLength; i <= maxLength; i++) {
 			// start with a string that is all the first char
 			StringBuilder str = new StringBuilder();
 			StringBuilder endStr = new StringBuilder();
@@ -66,7 +66,6 @@ public class SequentialCracker {
 			}
 			
 			// For the love of 神様 don't let the password be all the first char, but just in case:
-			System.out.println(str);
 			if (key.equals(str.toString())) {
 				return str.toString();
 			}
@@ -74,7 +73,6 @@ public class SequentialCracker {
 			// okay, now try all combos for the current length (i):
 			do {
 				incrementPosition(str, 0);
-				System.out.println(str);
 				if (key.equals(str.toString())) {
 					return str.toString();
 				}
